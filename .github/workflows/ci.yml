@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: website
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+      NEXT_PUBLIC_SITE_URL: https://example.com
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      # `prebuild` runs the unit and content tests (SEO character limits etc.)
+      - run: npm run build
+      - name: SEO and a11y smoke audit
+        run: |
+          npm run start -- -p 3200 &
+          npx --yes wait-on http://localhost:3200/robots.txt
+          BASE_URL=http://localhost:3200 npm run audit:seo
+      - name: Lighthouse CI (mobile budgets)
+        run: npx --yes @lhci/cli@0.14.0 autorun

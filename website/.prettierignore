@@ -1,0 +1,5 @@
+.next
+node_modules
+.lighthouseci
+package-lock.json
+next-env.d.ts
