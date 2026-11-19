@@ -1,0 +1,48 @@
+Core Web Vitals are three numbers Google uses to judge how a page feels to real visitors: how fast the main content appears (LCP), how quickly the page responds to input (INP) and how much the layout jumps around (CLS). The targets are 2.5 seconds or less for LCP, 200 milliseconds or less for INP and 0.1 or less for CLS, measured at the 75th percentile of real visits.
+
+This checklist is ordered by how often each item is the real cause on Next.js sites. Work from the top.
+
+## Start from field data
+
+Lab tools such as Lighthouse run on one simulated device. Your visitors use hundreds. Before changing code, check what real users experience:
+
+- Open the Core Web Vitals report in Google Search Console, or look up your URL in PageSpeed Insights and read the "Discover what your real users are experiencing" section.
+- Note which metric fails and on which page templates. A failing LCP on blog posts and a failing INP on the dashboard are two different problems.
+- If there is no field data yet, test on a mid-range Android phone over a throttled connection. A recent laptop on office Wi-Fi hides almost everything.
+
+## Fix Largest Contentful Paint
+
+LCP is usually the hero image or the main heading. Find out which element it is first; Chrome DevTools labels it in the Performance panel.
+
+- **Render the LCP element on the server.** If the heading only appears after JavaScript runs, LCP waits for your whole bundle. Keep it in a Server Component.
+- **Do not hide the heading behind an entrance animation.** Animating opacity from zero on the main heading delays LCP until the animation runs. Animate decoration instead.
+- **Prioritise the hero image.** Use `next/image` with the `priority` prop, explicit `width` and `height`, and a modern format.
+- **Self-host fonts.** `next/font` serves fonts from your own domain and sets `font-display: swap`, which removes a third-party connection from the critical path.
+- **Check server response time.** If time to first byte is slow, LCP cannot be fast. Prerender pages that do not need request-time data.
+
+## Fix Interaction to Next Paint
+
+INP measures the delay between a tap or keypress and the next frame the browser paints. Long JavaScript tasks are the usual cause.
+
+- **Ship less JavaScript.** Keep pages and sections as Server Components and push `"use client"` down to the small interactive leaves.
+- **Load heavy widgets later.** Use `next/dynamic` for below-the-fold components, chat widgets and anything the visitor may never use.
+- **Audit third-party scripts.** Tag managers, chat bubbles and session recorders often cost more than your own code. Load them with `next/script` and a lazy strategy.
+- **Keep event handlers short.** Update the UI first, then do expensive work in a transition or after the next frame.
+
+## Fix Cumulative Layout Shift
+
+CLS adds up every unexpected movement of visible content.
+
+- **Give media a size.** Every image, video and embed needs dimensions or an aspect ratio so the browser can reserve space.
+- **Reserve space for late content.** Cookie banners, ads and "announcement" bars should overlay content or have a fixed slot, not push the page down.
+- **Match fallback fonts.** `next/font` adjusts the fallback font's metrics so the swap to the web font does not reflow text.
+- **Animate transforms, not layout.** Moving elements with `transform` never shifts other content. Animating `top`, `height` or `margin` does.
+
+## Check before you launch
+
+- Run Lighthouse in an incognito window on the production build, not the dev server.
+- Test the three busiest templates on a real phone.
+- Run the bundle analyser and look for libraries that ended up in the client bundle by accident.
+- After launch, check Search Console's Core Web Vitals report again in four weeks. Field data takes about 28 days to update.
+
+If you would rather have someone else work through this list, a [Core Web Vitals audit](/services/core-web-vitals-audit) covers each item with code-level fixes for your site.
