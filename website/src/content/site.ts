@@ -3,11 +3,11 @@ import { publicEnv } from "@/lib/env";
 export const site = {
   name: "Emmanuel Nwachukwu",
   shortName: "Emmanuel N.",
-  role: "Senior Frontend Engineer",
+  role: "Software Engineer · Frontend, SRE & Application Security",
   location: { city: "Lagos", country: "Nigeria", countryCode: "NG" },
-  defaultTitle: "Hire a React Developer in Nigeria | Emmanuel N.",
+  defaultTitle: "Emmanuel Nwachukwu | Frontend, SRE & AppSec Engineer",
   description:
-    "Senior React, Next.js and TypeScript freelancer with 5+ years in production. Sites, dashboards, integrations and audits.",
+    "Software Engineer with 5+ years building fast, secure, and resilient SaaS and B2B systems across React, Next.js, Node.js, SRE, and Application Security.",
   /** Set to false when fully booked; the hero badge reads from this. */
   available: true,
   socials: {
@@ -22,6 +22,7 @@ export const site = {
   nav: [
     { label: "Services", href: "/#services" },
     { label: "Work", href: "/#work" },
+    { label: "About", href: "/#about" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
@@ -30,11 +31,13 @@ export const site = {
     "Next.js",
     "TypeScript",
     "Node.js",
-    "Chakra UI",
-    "Tailwind CSS",
-    "GSAP",
-    "Framer Motion",
-    "REST and GraphQL",
-    "Vercel",
+    "Application Security (OWASP)",
+    "Site Reliability (SRE)",
+    "AuthN & AuthZ",
+    "CI/CD & DevSecOps",
+    "Supabase",
+    "TanStack Query",
+    "OpenAI & Claude APIs",
+    "Chakra UI & Tailwind",
   ],
 } as const;
