@@ -66,10 +66,13 @@ export function Header() {
     };
   }, [open]);
 
+  const mobileItems = [{ label: "Overview", href: "/" }, ...site.nav];
+
   return (
     <Box
       as="header"
       ref={ref}
+      data-menu-open={open}
       position="sticky"
       top="0"
       zIndex="50"
@@ -78,12 +81,12 @@ export function Header() {
       borderBottomWidth="1px"
       borderColor="transparent"
       css={{
-        "&[data-scrolled=true]": {
-          backgroundColor: "rgb(5 8 15 / 0.72)",
-          backdropFilter: "blur(12px)",
+        "&[data-scrolled=true], &[data-menu-open=true]": {
+          backgroundColor: "rgb(7 7 13 / 0.92)",
+          backdropFilter: "blur(14px)",
           borderColor: "var(--c-border)",
         },
-        "&[data-hidden=true]:not(:focus-within)": {
+        "&[data-hidden=true]:not(:focus-within):not([data-menu-open=true])": {
           transform: "translateY(-100%)",
         },
         "@media (prefers-reduced-motion: reduce)": { transition: "none" },
@@ -212,29 +215,77 @@ export function Header() {
         data-open={open}
         inert={!open}
       >
-        <Flex as="ul" direction="column" gap="2">
-          {site.nav.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={() => setOpen(false)}
+        <ul className="mobile-menu__list">
+          {mobileItems.map((item, idx) => {
+            const isActive =
+              pathname === item.href ||
+              (item.href !== "/" &&
+                !item.href.startsWith("/#") &&
+                pathname.startsWith(item.href));
+            return (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="mobile-menu__link"
+                  data-active={isActive}
+                  aria-current={isActive ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  <span className="mobile-menu__link-left">
+                    <span className="mobile-menu__num" aria-hidden="true">
+                      0{idx + 1}
+                    </span>
+                    <span>{item.label}</span>
+                  </span>
+                  <span className="mobile-menu__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+
+        <div className="mobile-menu__footer">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "0.5rem",
+            }}
+          >
+            <span className="glow-pill">
+              <span
+                aria-hidden="true"
                 style={{
-                  display: "block",
-                  padding: "14px 0",
-                  fontSize: "1.5rem",
-                  fontWeight: 600,
+                  width: 6,
+                  height: 6,
+                  borderRadius: 999,
+                  background: "var(--c-lime)",
+                  boxShadow: "0 0 8px var(--c-lime)",
                 }}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-          <li style={{ marginTop: 16 }}>
-            <ButtonLink href={site.bookingHref} onClick={() => setOpen(false)}>
-              {site.primaryCta.label}
-            </ButtonLink>
-          </li>
-        </Flex>
+              />
+              Available for projects
+            </span>
+            <span
+              style={{
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: "0.75rem",
+                color: "var(--c-muted)",
+              }}
+            >
+              Lagos · UTC+1
+            </span>
+          </div>
+          <ButtonLink
+            href={site.bookingHref}
+            onClick={() => setOpen(false)}
+            style={{ width: "100%" }}
+          >
+            {site.primaryCta.label}
+          </ButtonLink>
+        </div>
       </nav>
     </Box>
   );
