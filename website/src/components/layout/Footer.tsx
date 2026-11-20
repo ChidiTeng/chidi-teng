@@ -29,8 +29,9 @@ export async function Footer() {
               {site.name}
             </Text>
             <Text color="fg.muted">
-              {site.role} in {site.location.city}. React, Next.js and TypeScript
-              for teams in Nigeria and worldwide.
+              {site.role} in {site.location.city}. Building fast, secure, and
+              resilient SaaS and B2B systems for high-trust teams in Nigeria and
+              worldwide.
             </Text>
           </Stack>
 

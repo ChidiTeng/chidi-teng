@@ -98,12 +98,40 @@ export function Header() {
         justify="space-between"
       >
         <Link href="/" aria-label={`${site.name}, home`}>
-          <Box as="span" fontWeight="600" letterSpacing="-0.02em" fontSize="lg">
-            {site.shortName}
-            <Box as="span" color="accent.cyan">
-              _
+          <HStack gap="2.5">
+            <Box
+              as="span"
+              aria-hidden="true"
+              display="inline-flex"
+              alignItems="center"
+              justifyContent="center"
+              boxSize="9"
+              rounded="full"
+              fontFamily="mono"
+              fontSize="xs"
+              fontWeight="700"
+              color="white"
+              css={{
+                background:
+                  "linear-gradient(135deg, #A78BFA 0%, #7C3AED 55%, #2DD4BF 100%)",
+                boxShadow:
+                  "inset 0 1px 0 0 rgb(255 255 255 / 0.35), 0 0 18px -2px rgb(167 139 250 / 0.55)",
+              }}
+            >
+              EN
             </Box>
-          </Box>
+            <Box
+              as="span"
+              fontWeight="600"
+              letterSpacing="-0.02em"
+              fontSize="lg"
+            >
+              {site.shortName}
+              <Box as="span" color="accent.cyan">
+                _
+              </Box>
+            </Box>
+          </HStack>
         </Link>
 
         <Box
@@ -111,19 +139,42 @@ export function Header() {
           aria-label="Primary"
           display={{ base: "none", md: "block" }}
         >
-          <HStack as="ul" gap="1">
-            {site.nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="btn btn--ghost btn--sm"
-                  aria-current={pathname === item.href ? "page" : undefined}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </HStack>
+          <ul className="nav-track">
+            <li>
+              <Link
+                href="/"
+                className="nav-pill"
+                data-active={pathname === "/"}
+                aria-current={pathname === "/" ? "page" : undefined}
+              >
+                {pathname === "/" && (
+                  <span className="nav-pill__dot" aria-hidden="true" />
+                )}
+                Overview
+              </Link>
+            </li>
+            {site.nav.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (!item.href.startsWith("/#") &&
+                  pathname.startsWith(item.href));
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="nav-pill"
+                    data-active={isActive}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {isActive && (
+                      <span className="nav-pill__dot" aria-hidden="true" />
+                    )}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </Box>
 
         <HStack gap="2">
@@ -142,6 +193,7 @@ export function Header() {
             rounded="full"
             borderWidth="1px"
             borderColor="border.subtle"
+            bg="bg.surface"
             aria-expanded={open}
             aria-controls={menuId}
             aria-label={open ? "Close menu" : "Open menu"}

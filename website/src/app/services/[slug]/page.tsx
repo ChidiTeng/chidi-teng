@@ -2,11 +2,11 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Badge,
   Box,
   Flex,
   Grid,
   Heading,
+  HStack,
   List,
   Stack,
   Text,
@@ -15,7 +15,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Section } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/ButtonLink";
-import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { SpotlightCard, type GlowTone } from "@/components/ui/SpotlightCard";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { Process } from "@/components/sections/Process";
@@ -31,6 +31,28 @@ import { caseStudies } from "@/content/work";
 import { posts } from "@/content/posts";
 import { site } from "@/content/site";
 import { breadcrumbSchema, pageMetadata, serviceOfferSchema } from "@/lib/seo";
+
+const benefitTones: {
+  tone: GlowTone;
+  squircle: string;
+  pill: string;
+}[] = [
+  {
+    tone: "violet",
+    squircle: "icon-squircle icon-squircle--violet",
+    pill: "glow-pill glow-pill--violet",
+  },
+  {
+    tone: "cyan",
+    squircle: "icon-squircle icon-squircle--cyan",
+    pill: "glow-pill glow-pill--cyan",
+  },
+  {
+    tone: "lime",
+    squircle: "icon-squircle icon-squircle--lime",
+    pill: "glow-pill",
+  },
+];
 
 export function generateStaticParams() {
   return leadServices.map((s) => ({ slug: s.slug }));
@@ -101,20 +123,34 @@ export default async function ServicePage({
           gap="4"
           templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
         >
-          {s.page.benefits.map((b, i) => (
-            <li key={b.title}>
-              <Reveal delay={i * 0.06}>
-                <SpotlightCard h="full">
-                  <Heading as="h3" textStyle="h3">
-                    {b.title}
-                  </Heading>
-                  <Text mt="3" color="fg.muted">
-                    {b.body}
-                  </Text>
-                </SpotlightCard>
-              </Reveal>
-            </li>
-          ))}
+          {s.page.benefits.map((b, i) => {
+            const cfg = benefitTones[i % benefitTones.length]!;
+            return (
+              <li key={b.title}>
+                <Reveal delay={i * 0.06}>
+                  <SpotlightCard glow={cfg.tone} h="full">
+                    <Flex
+                      align="center"
+                      justify="space-between"
+                      gap="3"
+                      mb="5"
+                    >
+                      <span className={cfg.squircle} aria-hidden="true">
+                        0{i + 1}
+                      </span>
+                      <span className={cfg.pill}>Outcome 0{i + 1}</span>
+                    </Flex>
+                    <Heading as="h3" textStyle="h3">
+                      {b.title}
+                    </Heading>
+                    <Text mt="3" color="fg.muted">
+                      {b.body}
+                    </Text>
+                  </SpotlightCard>
+                </Reveal>
+              </li>
+            );
+          })}
         </Grid>
       </Section>
 
@@ -130,28 +166,61 @@ export default async function ServicePage({
               What you receive
             </SectionHeading>
           </Box>
-          <GlassCard>
+          <GlassCard glow="cyan">
             <List.Root as="ul" gap="3" variant="plain">
               {s.page.deliverables.map((d) => (
-                <List.Item key={d} alignItems="flex-start" gap="3">
-                  <Box as="span" color="accent.cyan" aria-hidden="true">
-                    ✓
-                  </Box>
-                  {d}
+                <List.Item
+                  key={d}
+                  className="subcard"
+                  px="4"
+                  py="3"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  gap="3"
+                >
+                  <HStack gap="3">
+                    <Box
+                      as="span"
+                      color="accent.lime"
+                      fontFamily="mono"
+                      fontWeight="700"
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </Box>
+                    <Text as="span" fontWeight="500">
+                      {d}
+                    </Text>
+                  </HStack>
+                  <span className="glow-pill glow-pill--cyan">Included</span>
                 </List.Item>
               ))}
             </List.Root>
-            <Flex mt="6" gap="2" align="center" wrap="wrap">
-              <Badge
-                variant="outline"
-                colorPalette={s.page.proof === "strong" ? "green" : "gray"}
+            <Flex mt="6" gap="3" align="center" wrap="wrap">
+              <span
+                className={
+                  s.page.proof === "strong"
+                    ? "glow-pill"
+                    : "glow-pill glow-pill--violet"
+                }
               >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    width: 6,
+                    height: 6,
+                    borderRadius: 999,
+                    background: "currentColor",
+                    boxShadow: "0 0 8px currentColor",
+                  }}
+                />
                 {s.page.proof === "strong"
                   ? "Core service"
                   : s.page.proof === "partial"
                     ? "Established"
                     : "New"}
-              </Badge>
+              </span>
               <Text fontSize="sm" color="fg.muted">
                 {proofCopy[s.page.proof]}
               </Text>
