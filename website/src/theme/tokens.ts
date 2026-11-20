@@ -5,19 +5,21 @@
  */
 export const palette = {
   ink: {
-    950: "#05080F", // canvas
-    900: "#0B1220", // surface
-    800: "#111A2E", // raised
-    700: "#1E2A44", // border
+    950: "#07070D", // cosmic obsidian canvas
+    900: "#0F101A", // dark glowing card surface
+    800: "#171826", // raised inner sub-card / pill surface
+    700: "#25263B", // subtle specular hairline border
   },
   fg: {
-    default: "#E6EDF7",
-    muted: "#9AA7BF",
-    subtle: "#6B7894", // decorative only, never body copy
+    default: "#F1F5F9",
+    muted: "#94A3B8",
+    subtle: "#64748B", // decorative only, never body copy
   },
   accent: {
-    cyan: "#22D3EE",
-    violet: "#A78BFA",
+    cyan: "#2DD4BF", // glowing mint-cyan
+    violet: "#A78BFA", // electric lavender-violet
+    lime: "#BEF264", // signature featured card lime-mint highlight
+    amber: "#FBBF24", // warm metric glow
   },
   status: {
     success: "#34D399",
@@ -26,4 +28,7 @@ export const palette = {
   },
 } as const;
 
-export const signatureGradient = `linear-gradient(120deg, ${palette.accent.cyan} 0%, ${palette.accent.violet} 100%)`;
+export const signatureGradient = `linear-gradient(120deg, ${palette.accent.cyan} 0%, ${palette.accent.violet} 55%, ${palette.accent.lime} 100%)`;
+
+export const featuredCardGradient =
+  "linear-gradient(135deg, #6EE7B7 0%, #A7F3D0 38%, #D9F99D 74%, #BEF264 100%)";

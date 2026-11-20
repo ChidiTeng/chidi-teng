@@ -67,6 +67,8 @@ const config = defineConfig({
         accent: {
           cyan: { value: palette.accent.cyan },
           violet: { value: palette.accent.violet },
+          lime: { value: palette.accent.lime },
+          amber: { value: palette.accent.amber },
         },
       },
       fonts: {
