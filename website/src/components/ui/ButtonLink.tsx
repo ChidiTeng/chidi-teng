@@ -13,7 +13,15 @@ type Props = {
 const isExternal = (href: string) =>
   /^(https?:)?\/\//.test(href) || href.startsWith("mailto:");
 
-/** CSS-only button link. External URLs open in a new tab with safe rel. */
+const isCalBookingUrl = (href: string) =>
+  /^https?:\/\/(www\.|app\.)?cal\.com\//i.test(href);
+
+/**
+ * CSS-only button link. External URLs open in a new tab with safe rel.
+ * Cal.com booking URLs are tagged with `data-cal-trigger="true"` so
+ * CalBookingModal intercepts plain left-clicks and opens the in-app modal,
+ * while middle-click / no-JS still opens Cal.com normally.
+ */
 export function ButtonLink({
   href,
   children,
@@ -27,10 +35,12 @@ export function ButtonLink({
     .join(" ");
   if (isExternal(href)) {
     const newTab = !href.startsWith("mailto:");
+    const calTrigger = isCalBookingUrl(href);
     return (
       <a
         href={href}
         className={cls}
+        {...(calTrigger && { "data-cal-trigger": "true" })}
         {...(newTab && { target: "_blank", rel: "noopener noreferrer" })}
         {...rest}
       >

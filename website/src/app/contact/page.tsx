@@ -6,7 +6,6 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { services } from "@/content/services";
-import { site } from "@/content/site";
 import { publicEnv } from "@/lib/env";
 import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "./ContactForm";
@@ -24,12 +23,28 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Tell me what you are building"
-        lead="Send a few lines about the project, or book a call directly. Every enquiry gets a reply."
+        lead="Send a few lines about the project, or book a discovery call directly. Every enquiry gets a reply."
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Contact", path: "/contact" },
         ]}
-      />
+      >
+        {publicEnv.calUrl && (
+          <Flex mt="8" gap="3" wrap="wrap" align="center">
+            <ButtonLink href={publicEnv.calUrl}>
+              Book a discovery call
+            </ButtonLink>
+            {publicEnv.contactEmail && (
+              <ButtonLink
+                href={`mailto:${publicEnv.contactEmail}`}
+                variant="outline"
+              >
+                Email {publicEnv.contactEmail}
+              </ButtonLink>
+            )}
+          </Flex>
+        )}
+      </PageHeader>
       <Section pt="0" aria-label="Contact options">
         <Grid
           templateColumns={{ base: "1fr", lg: "3fr 2fr" }}
@@ -64,24 +79,25 @@ export default function ContactPage() {
               <SpotlightCard featured>
                 <Flex align="center" justify="space-between" gap="3" mb="4">
                   <span className="glow-pill glow-pill--dark">
-                    20-min call
+                    30-min discovery call
                   </span>
                   <span className="corner-arrow" aria-hidden="true">
                     ↗
                   </span>
                 </Flex>
                 <Heading as="h2" textStyle="h3" color="#07070D">
-                  Prefer to talk?
+                  Prefer to talk live?
                 </Heading>
                 <Text mt="2" color="#1E293B" fontWeight="500">
-                  Pick a time for a free 20-minute scoping call.
+                  Pick a slot on my calendar for a discovery call to walk
+                  through your architecture, timeline, and goals.
                 </Text>
                 <ButtonLink
                   href={publicEnv.calUrl}
                   className="btn--dark"
                   style={{ marginTop: 20 }}
                 >
-                  {site.primaryCta.label}
+                  Book a discovery call
                 </ButtonLink>
               </SpotlightCard>
             )}
