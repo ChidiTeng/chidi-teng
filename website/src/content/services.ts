@@ -36,37 +36,37 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "nextjs-development",
-    name: "Next.js development",
+    name: "Next.js & SaaS development",
     summary:
-      "Fast, SEO-ready marketing sites and web apps on the Next.js App Router.",
+      "Fast, secure, SEO-ready SaaS products, B2B web apps, and marketing platforms on the Next.js App Router.",
     lead: true,
     tile: "2x2",
     page: {
-      h1: "Next.js development for sites that need to rank and load fast",
-      sub: "Marketing sites and web apps built on the App Router with TypeScript, server rendering and a performance budget agreed before the first commit.",
-      title: "Next.js Developer for Hire | Emmanuel Nwachukwu",
+      h1: "Next.js development for B2B products and sites that need speed and trust",
+      sub: "Production web apps, multi-tenant storefronts, and marketing platforms built on the App Router with TypeScript, security-first architecture, and a Core Web Vitals budget agreed before the first commit.",
+      title: "Next.js & SaaS Developer for Hire | Emmanuel Nwachukwu",
       description:
-        "Freelance Next.js developer in Lagos. App Router builds with TypeScript, SEO baked in and Core Web Vitals budgets agreed up front. Book a scoping call.",
+        "Senior Next.js engineer in Lagos. App Router SaaS and B2B builds with TypeScript, OWASP-aware security, SEO baked in, and Core Web Vitals budgets.",
       keyword: "next.js developer",
       benefits: [
         {
-          title: "Search-ready from day one",
-          body: "Server-rendered HTML, per-page metadata, sitemap and structured data are part of the build, not an add-on after launch.",
+          title: "Architected for speed and search",
+          body: "Server-rendered HTML, per-page metadata, sitemap, structured data, and real-device Core Web Vitals targets are engineered from day one.",
         },
         {
-          title: "Performance as a requirement",
-          body: "We agree targets for LCP, INP and CLS during scoping and check them on a real mid-range phone before handover.",
+          title: "Security and resilience built in",
+          body: "Strict authentication boundaries, validated inputs, and hardened headers are part of the initial architecture—not bolted on after launch.",
         },
         {
-          title: "Code your team can own",
-          body: "Typed content files, small components and a short README so the next developer is productive on day one.",
+          title: "Code your engineering team can own",
+          body: "Typed content models, modular components, and CI/CD review gates so your internal developers stay productive and post-release defects stay low.",
         },
       ],
       deliverables: [
         "App Router codebase in TypeScript",
-        "Per-page metadata, sitemap and JSON-LD",
-        "Lighthouse and real-device performance report",
-        "Deployment to Vercel or your own host",
+        "Hardened auth, headers & input validation",
+        "Per-page metadata, sitemap & JSON-LD",
+        "Lighthouse & real-device performance report",
       ],
       faq: [
         {
@@ -83,22 +83,22 @@ export const services: Service[] = [
         },
       ],
       proof: "strong",
-      updated: "2026-11-19",
+      updated: "2026-11-20",
     },
   },
   {
     slug: "website-redesign",
-    name: "Website redesign",
+    name: "Legacy platform & site redesign",
     summary:
-      "Rebuild a dated or slow site without losing the rankings you already have.",
+      "Refactor and rebuild a legacy product or slow site on Next.js without losing search traffic or business continuity.",
     lead: true,
     tile: "2x1",
     page: {
-      h1: "Website redesign without losing your search traffic",
-      sub: "A modern rebuild that keeps your URLs, redirects and metadata intact, so the new site starts with the rankings the old one earned.",
-      title: "Website Redesign Services in Nigeria | Emmanuel N.",
+      h1: "Legacy platform and website redesign without losing traffic or momentum",
+      sub: "A structured rebuild that pays down technical debt, hardens security boundaries, and keeps your URLs, redirects, and metadata intact.",
+      title: "Website & SaaS Redesign Services | Emmanuel Nwachukwu",
       description:
-        "Redesign and rebuild your website on Next.js with an SEO-safe migration plan: URL mapping, 301 redirects and metadata carried over. Book a scoping call.",
+        "Redesign and refactor legacy web apps or marketing sites on Next.js. Technical debt reduction, 301 redirect mapping, and mobile Core Web Vitals.",
       keyword: "website redesign nigeria",
       benefits: [
         {
@@ -106,19 +106,19 @@ export const services: Service[] = [
           body: "Every existing URL is mapped to its new home with a 301 redirect, and metadata is carried across before launch.",
         },
         {
-          title: "Faster on real phones",
-          body: "Most visitors arrive on mobile data. The rebuild targets mobile Core Web Vitals, not only a desktop Lighthouse score.",
+          title: "Technical debt paid down",
+          body: "Brittle legacy state and duplicated UI templates are replaced with a typed, token-driven component architecture your team can extend safely.",
         },
         {
-          title: "Easier to update",
-          body: "Content moves out of hard-coded templates into structured data your team can edit without breaking layouts.",
+          title: "Faster on real mobile networks",
+          body: "Most visitors and field agents operate on mobile data. The rebuild targets real-device Core Web Vitals, not just a desktop score.",
         },
       ],
       deliverables: [
-        "Content and URL inventory of the current site",
-        "Redirect map and launch checklist",
-        "Rebuilt site on Next.js",
-        "Post-launch Search Console check",
+        "Architecture, URL & technical-debt inventory",
+        "301 redirect map and launch checklist",
+        "Rebuilt platform on Next.js & TypeScript",
+        "Post-launch Search Console & telemetry check",
       ],
       faq: [
         {
@@ -130,43 +130,43 @@ export const services: Service[] = [
           a: "Yes. High-traffic templates can go first behind the same domain while the rest of the site follows.",
         },
       ],
-      proof: "partial",
-      updated: "2026-11-19",
+      proof: "strong",
+      updated: "2026-11-20",
     },
   },
   {
     slug: "core-web-vitals-audit",
-    name: "Core Web Vitals audit",
+    name: "Core Web Vitals & reliability audit",
     summary:
-      "Find what is slowing your site down, ranked by impact, with fixes your team can ship.",
+      "Pinpoint what is hurting LCP, INP, CLS, and frontend security boundaries—ranked by business impact with code-level fixes.",
     lead: true,
     tile: "2x1",
     page: {
-      h1: "Core Web Vitals audit with fixes, not just a score",
-      sub: "A prioritised report on what is hurting LCP, INP and CLS on your site, with code-level fixes and an estimate for each one.",
-      title: "Core Web Vitals Audit for React and Next.js Sites",
+      h1: "Core Web Vitals and frontend reliability audit with code-level fixes",
+      sub: "A prioritised engineering report on what is hurting LCP, INP, CLS, and client-side resilience on your site, with concrete pull requests or patches.",
+      title: "Core Web Vitals & Frontend Audit | Emmanuel Nwachukwu",
       description:
-        "Fix slow LCP, INP and layout shift. A Core Web Vitals audit for React and Next.js sites with prioritised, code-level fixes and real-device testing.",
+        "Fix slow LCP, INP, layout shift, and fragile client state. Prioritised, code-level fixes and real-device testing for React and Next.js applications.",
       keyword: "core web vitals audit",
       benefits: [
         {
-          title: "Field data first",
-          body: "The audit starts from real-user data where it exists, then reproduces problems in the lab so fixes can be verified.",
+          title: "Field data and real devices first",
+          body: "The audit starts from real-user telemetry where it exists, then reproduces bottlenecks in the lab so fixes can be verified objectively.",
         },
         {
-          title: "Ranked by impact",
-          body: "Each issue is scored by how much it moves the metric and how much effort it takes, so you fix the cheap wins first.",
+          title: "Performance + OWASP hygiene",
+          body: "Alongside bundle and render-path bottlenecks, I flag exposed client secrets, unsafe third-party scripts, and broken auth redirect flows.",
         },
         {
-          title: "Fixes, not jargon",
-          body: "You get specific code changes or pull requests, not a list of generic Lighthouse warnings.",
+          title: "Code changes, not generic PDFs",
+          body: "You get specific code diffs or pull requests ranked by impact versus effort, not a dump of raw Lighthouse warnings.",
         },
       ],
       deliverables: [
-        "Written report with prioritised issues",
-        "Bundle and render-path analysis",
-        "Real-device test results",
-        "Optional implementation of the fixes",
+        "Prioritised report on CWV & client resilience",
+        "Bundle, hydration & render-path analysis",
+        "Client-side security & third-party script check",
+        "Optional pull-request implementation of fixes",
       ],
       faq: [
         {
@@ -179,42 +179,42 @@ export const services: Service[] = [
         },
       ],
       proof: "strong",
-      updated: "2026-11-19",
+      updated: "2026-11-20",
     },
   },
   {
     slug: "dashboard-development",
-    name: "Dashboard development",
+    name: "B2B dashboards & role-based workflows",
     summary:
-      "Admin panels and data dashboards that stay fast with real data volumes.",
+      "High-trust admin panels, FinTech/HR workflows, and data dashboards with RBAC and fast rendering at scale.",
     lead: true,
     tile: "2x1",
     page: {
-      h1: "Dashboard development for teams that live in their data",
-      sub: "Admin panels, internal tools and customer dashboards in React and TypeScript, built to stay responsive as the data grows.",
-      title: "React Dashboard Development | Emmanuel Nwachukwu",
+      h1: "Dashboard development for high-trust B2B and operational teams",
+      sub: "Admin panels, approval engines, and data-heavy dashboards in React and TypeScript, engineered for role-based security and responsiveness as volume grows.",
+      title: "React B2B Dashboard Development | Emmanuel Nwachukwu",
       description:
-        "Custom React and TypeScript dashboards: tables, charts, filters and role-based access that stay fast with real data. Freelance, Lagos-based, remote-ready.",
+        "Custom React and TypeScript B2B dashboards: virtualised tables, role-based access control (AuthN/AuthZ), approval workflows, and resilient data caching.",
       keyword: "react dashboard developer",
       benefits: [
         {
-          title: "Fast with real data",
-          body: "Pagination, virtualised tables and cached queries so the UI stays responsive past the first thousand rows.",
+          title: "Fast under real transaction volumes",
+          body: "Pagination, virtualised views, and TanStack Query caching keep the interface responsive well past the first thousand rows.",
+        },
+        {
+          title: "Role-based access & auditability",
+          body: "Multi-stakeholder approval gates, permission-aware views, and strict AuthN/AuthZ boundaries tailored for FinTech, HR, and enterprise ops.",
         },
         {
           title: "Typed end to end",
-          body: "API responses are validated and typed, so a backend change shows up as a build error, not a blank screen.",
-        },
-        {
-          title: "Accessible by default",
-          body: "Keyboard-operable tables, filters and dialogs, with charts that have text alternatives.",
+          body: "API payloads are validated against schemas so upstream contract drift surfaces at build time rather than crashing a live operator screen.",
         },
       ],
       deliverables: [
-        "Dashboard UI in React and TypeScript",
-        "Data layer with caching and error states",
-        "Role-aware navigation and views",
-        "Handover notes for your team",
+        "B2B dashboard UI in React & TypeScript",
+        "Role-aware navigation, RBAC & approval flows",
+        "Cached data layer with loading, retry & error states",
+        "Architecture & handover documentation",
       ],
       faq: [
         {
@@ -226,57 +226,92 @@ export const services: Service[] = [
           a: "The one that fits your data and bundle budget. For most dashboards a lightweight SVG library is enough.",
         },
       ],
-      proof: "partial",
-      updated: "2026-11-19",
+      proof: "strong",
+      updated: "2026-11-20",
     },
   },
   {
     slug: "api-integration",
-    name: "API integration",
+    name: "Resilient API, sync & AI integration",
     summary:
-      "Payments, CRMs, email and third-party APIs wired in safely on the server.",
+      "Fault-tolerant third-party sync engines, payment gateways, and multi-LLM AI assistants wired safely on the server.",
     lead: true,
     tile: "2x1",
     page: {
-      h1: "API integration that keeps your keys and your users safe",
-      sub: "Payment gateways, CRMs, email providers and internal APIs connected through server-side handlers with validation, retries and clear error states.",
-      title: "API Integration for React and Next.js Apps",
+      h1: "API and AI integrations engineered for reliability, security, and cost control",
+      sub: "Third-party sync pipelines, payment gateways, CRMs, and OpenAI/Claude assistants connected with token caching, rate-limiting, retries, and strict server-side key isolation.",
+      title: "Resilient API & AI Integration | Emmanuel Nwachukwu",
       description:
-        "Connect payments, CRMs, email and third-party APIs to your React or Next.js app. Server-side keys, validated payloads and clear error handling.",
+        "Fault-tolerant API and AI integrations for React, Next.js, and Node.js: token caching, rate limiting, exponential backoff, and tenant cost guardrails.",
       keyword: "api integration developer",
       benefits: [
         {
-          title: "Secrets stay on the server",
-          body: "Keys live in route handlers and environment variables, never in the browser bundle.",
+          title: "Engineered for transient failure (SRE)",
+          body: "Token caching, request rate-limiting, and exponential-backoff retries—proven on 50,000+ daily biometric sync transactions—auto-resolve transient outages.",
         },
         {
-          title: "Validated at the edge of your app",
-          body: "Every inbound and outbound payload is checked against a schema, so bad data fails loudly and early.",
+          title: "AppSec boundaries & secret isolation",
+          body: "Credentials, webhook signatures, and tenant credit caps live strictly on the server with schema validation at every trust boundary.",
         },
         {
-          title: "Failure is designed for",
-          body: "Timeouts, retries and user-facing error states are part of the work, not left for later.",
+          title: "Applied AI with cost guardrails",
+          body: "Multi-provider LLM workflows (OpenAI + Claude) wired with live CRM tool retrieval and organization-level usage limits to prevent runaway token spend.",
         },
       ],
       deliverables: [
-        "Server-side integration handlers",
-        "Typed client and validation schemas",
-        "Error, loading and retry states",
-        "Short runbook for keys and webhooks",
+        "Server-side integration & sync handlers",
+        "Token caching, rate-limiting & retry/backoff logic",
+        "Typed schemas, webhook verification & credit caps",
+        "Operational runbook for keys, quotas & failure modes",
       ],
       faq: [
         {
           q: "Which providers have you worked with?",
-          a: "Ask about your specific provider on the scoping call. Most modern APIs follow similar patterns, and I read the docs before quoting.",
+          a: "OpenAI, Claude, Supabase, Flutterwave, BioTime biometric APIs, CRMs, and custom REST/GraphQL backends. I review provider rate limits and auth models before quoting.",
         },
         {
-          q: "Can you handle webhooks?",
-          a: "Yes, including signature verification and idempotent processing so repeated events do not cause duplicate actions.",
+          q: "Can you handle webhooks and high-volume background sync?",
+          a: "Yes, including cryptographic signature verification, idempotent processing, and rate-limited background queues that survive third-party downtime.",
         },
       ],
-      proof: "partial",
-      updated: "2026-11-19",
+      proof: "strong",
+      updated: "2026-11-20",
     },
+  },
+  {
+    slug: "web-app-security-review",
+    name: "Web & API security review (OWASP)",
+    summary:
+      "Threat modeling, AuthN/AuthZ review, and OWASP vulnerability checks for React, Next.js, and Node.js apps.",
+    lead: false,
+  },
+  {
+    slug: "sre-resilience-engineering",
+    name: "Resilience & sync engineering (SRE)",
+    summary:
+      "Rate-limiting, token caching, exponential-backoff retries, and fault-tolerant background sync pipelines.",
+    lead: false,
+  },
+  {
+    slug: "ai-assistant-integration",
+    name: "AI assistant & multi-LLM integration",
+    summary:
+      "OpenAI and Claude workflows with live CRM retrieval, tool calling, and organization-level usage credit caps.",
+    lead: false,
+  },
+  {
+    slug: "pwa-offline-engineering",
+    name: "Cross-origin PWA & field-agent apps",
+    summary:
+      "Installable PWAs that preserve install intent across auth redirects with Android and iOS fallback flows.",
+    lead: false,
+  },
+  {
+    slug: "devsecops-cicd",
+    name: "CI/CD & PR quality gates (DevSecOps)",
+    summary:
+      "Automated build, security checks, and PR review standards proven to cut quarterly post-release defects by 73%.",
+    lead: false,
   },
   {
     slug: "react-development",
@@ -287,43 +322,44 @@ export const services: Service[] = [
   },
   {
     slug: "landing-pages",
-    name: "Landing pages",
+    name: "High-conversion landing pages",
     summary:
       "Campaign and product pages built for speed and conversion tracking.",
     lead: false,
   },
   {
     slug: "design-systems",
-    name: "Component libraries",
+    name: "Component libraries & multi-theme systems",
     summary:
-      "Reusable, accessible UI components with tokens and documentation.",
+      "Token-driven UI systems and multi-tenant storefront templates with documentation.",
     lead: false,
   },
   {
     slug: "nextjs-migration",
-    name: "Next.js migration",
+    name: "Next.js App Router migration",
     summary:
-      "Move from Create React App or the Pages Router to the App Router.",
+      "Move from Create React App or the Pages Router to the App Router safely.",
     lead: false,
   },
   {
     slug: "accessibility-audit",
-    name: "Accessibility audit",
+    name: "WCAG 2.2 AA accessibility audit",
     summary:
       "WCAG 2.2 AA review with prioritised fixes for keyboard and screen readers.",
     lead: false,
   },
   {
     slug: "headless-cms",
-    name: "Headless CMS setup",
+    name: "Headless CMS & Supabase setup",
     summary:
-      "Give editors a CMS while the site stays fast and statically rendered.",
+      "Typed content backends and Supabase integrations that keep the frontend fast.",
     lead: false,
   },
   {
     slug: "frontend-support",
-    name: "Ongoing frontend support",
-    summary: "A monthly retainer for fixes, upgrades and small features.",
+    name: "Ongoing engineering retainer",
+    summary:
+      "A monthly retainer for features, security hardening, and reliability upgrades.",
     lead: false,
   },
 ];

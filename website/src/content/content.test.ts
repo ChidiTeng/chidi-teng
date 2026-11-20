@@ -17,8 +17,8 @@ describe("services", () => {
     expect(new Set(slugs).size).toBe(slugs.length);
   });
 
-  it("offers 12 services, with 5 lead services that each have a page", () => {
-    expect(services).toHaveLength(12);
+  it("offers 17 services, with 5 lead services that each have a page", () => {
+    expect(services).toHaveLength(17);
     expect(leadServices).toHaveLength(5);
     expect(services.filter((s) => s.lead && !s.page)).toEqual([]);
   });

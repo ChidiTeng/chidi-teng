@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, HStack } from "@chakra-ui/react";
 import { Section } from "@/components/ui/Container";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { GradientText, Lead } from "@/components/ui/Typography";
@@ -15,11 +15,60 @@ export function CtaBand({
   return (
     <Section aria-labelledby="cta-title">
       <GlassCard
+        glow="cyan"
         position="relative"
         overflow="hidden"
         p={{ base: "8", md: "14" }}
         textAlign={{ md: "center" }}
       >
+        <Box
+          aria-hidden="true"
+          position="absolute"
+          top="-35%"
+          left="-10%"
+          w="360px"
+          h="360px"
+          rounded="full"
+          pointerEvents="none"
+          css={{
+            background:
+              "radial-gradient(closest-side, rgb(167 139 250 / 0.22), transparent)",
+          }}
+        />
+        <Box
+          aria-hidden="true"
+          position="absolute"
+          bottom="-35%"
+          right="-10%"
+          w="360px"
+          h="360px"
+          rounded="full"
+          pointerEvents="none"
+          css={{
+            background:
+              "radial-gradient(closest-side, rgb(190 242 100 / 0.16), transparent)",
+          }}
+        />
+
+        <HStack
+          justify={{ base: "flex-start", md: "center" }}
+          mb="5"
+        >
+          <span className="glow-pill">
+            <span
+              aria-hidden="true"
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 999,
+                background: "var(--c-lime)",
+                boxShadow: "0 0 8px var(--c-lime)",
+              }}
+            />
+            Fixed-price scoping · Fast turnaround
+          </span>
+        </HStack>
+
         <Heading
           as="h2"
           id="cta-title"

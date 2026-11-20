@@ -5,6 +5,7 @@ import { Providers } from "./providers";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { RevealObserver } from "@/components/layout/RevealObserver";
+import { CalBookingModal } from "@/components/layout/CalBookingModal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/content/site";
 import { siteUrl, personSchema, serviceSchema } from "@/lib/seo";
@@ -64,6 +65,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <RevealObserver />
+          <CalBookingModal />
         </Providers>
         <JsonLd data={[personSchema, serviceSchema]} />
       </body>

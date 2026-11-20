@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import {
   Box,
   Field,
+  Flex,
   Grid,
   Input,
   NativeSelect,
@@ -202,25 +203,25 @@ export function ContactForm({ services }: { services: string[] }) {
           </label>
         </Box>
 
-        <Box>
+        <Flex justify="space-between" mt={2} gap="3" wrap="wrap" align="center">
+          <Text
+            id="form-status"
+            role="alert"
+            aria-live="assertive"
+            color="danger"
+            fontSize="sm"
+          >
+            {status === "error" ? error : ""}
+          </Text>
           <button
             type="submit"
             className="btn btn--primary"
+            style={{ marginLeft: "auto" }}
             aria-disabled={status === "submitting"}
           >
             {status === "submitting" ? "Sending…" : "Send message"}
           </button>
-        </Box>
-
-        <Text
-          id="form-status"
-          role="alert"
-          aria-live="assertive"
-          color="danger"
-          minH="6"
-        >
-          {status === "error" ? error : ""}
-        </Text>
+        </Flex>
       </Stack>
     </form>
   );

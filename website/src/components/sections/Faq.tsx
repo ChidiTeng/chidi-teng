@@ -26,14 +26,8 @@ export function Faq({
       <SectionHeading as={headingLevel} id={`${id}-title`}>
         {title}
       </SectionHeading>
-      <Stack
-        mt="10"
-        gap="0"
-        maxW="3xl"
-        borderTopWidth="1px"
-        borderColor="border.subtle"
-      >
-        {items.map((item) => (
+      <Stack mt="10" gap="3" maxW="3xl">
+        {items.map((item, idx) => (
           <details key={item.q} className="accordion">
             <Box
               as="summary"
@@ -42,19 +36,28 @@ export function Faq({
               justifyContent="space-between"
               gap="6"
               py="5"
-              borderBottomWidth="1px"
-              borderColor="border.subtle"
               _hover={{ color: "accent.cyan" }}
               transition="color .2s"
             >
-              <QuestionTag style={{ fontSize: "1.0625rem", fontWeight: 500 }}>
-                {item.q}
-              </QuestionTag>
+              <Box display="flex" alignItems="center" gap="3.5">
+                <Text
+                  as="span"
+                  aria-hidden="true"
+                  fontFamily="mono"
+                  fontSize="xs"
+                  color="accent.violet"
+                >
+                  0{idx + 1}
+                </Text>
+                <QuestionTag style={{ fontSize: "1.0625rem", fontWeight: 500 }}>
+                  {item.q}
+                </QuestionTag>
+              </Box>
               <Box
                 as="span"
                 className="accordion__icon"
                 aria-hidden="true"
-                fontSize="xl"
+                fontSize="lg"
                 color="accent.cyan"
                 lineHeight="1"
               >
@@ -63,8 +66,9 @@ export function Faq({
             </Box>
             <Box
               className="accordion__body"
-              py="5"
-              borderBottomWidth="1px"
+              pb="5"
+              pt="2"
+              borderTopWidth="1px"
               borderColor="border.subtle"
             >
               <Text color="fg.muted" maxW="prose">

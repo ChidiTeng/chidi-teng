@@ -14,6 +14,7 @@ import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { Marquee } from "@/components/ui/Marquee";
 import { Reveal } from "@/components/ui/Reveal";
+import { HeroTelemetryPod } from "@/components/sections/HeroTelemetryPod";
 import { palette } from "@/theme/tokens";
 
 export const metadata: Metadata = {
@@ -106,22 +107,44 @@ export default function KitPage() {
       </Section>
 
       <Section>
+        <SectionHeading>3D Hero HUD Dock</SectionHeading>
+        <Box mt="8">
+          <HeroTelemetryPod />
+        </Box>
+      </Section>
+
+      <Section>
         <SectionHeading>Cards</SectionHeading>
-        <Grid mt="8" gap="4" templateColumns={{ base: "1fr", md: "1fr 1fr" }}>
-          <SpotlightCard>
-            <Heading as="h3" textStyle="h3">
+        <Grid
+          mt="8"
+          gap="4"
+          templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
+        >
+          <SpotlightCard featured>
+            <span className="glow-pill glow-pill--dark">↑ Featured</span>
+            <Heading as="h3" textStyle="h3" mt="4" color="#07070D">
+              Featured gradient card
+            </Heading>
+            <Text mt="2" color="#1E293B" fontWeight="500">
+              Mint-to-lime glowing accent card inspired by the reference UI.
+            </Text>
+          </SpotlightCard>
+          <SpotlightCard glow="violet">
+            <span className="glow-pill glow-pill--violet">Spotlight</span>
+            <Heading as="h3" textStyle="h3" mt="4">
               Spotlight card
             </Heading>
             <Text mt="2" color="fg.muted">
-              Move the mouse over me.
+              Move the mouse over me for a radial glow.
             </Text>
           </SpotlightCard>
-          <GlassCard>
-            <Heading as="h3" textStyle="h3">
+          <GlassCard glow="cyan">
+            <span className="glow-pill glow-pill--cyan">Glass</span>
+            <Heading as="h3" textStyle="h3" mt="4">
               Glass card
             </Heading>
             <Text mt="2" color="fg.muted">
-              Backdrop blur, solid on small screens.
+              Backdrop blur with bottom ambient aura.
             </Text>
           </GlassCard>
         </Grid>

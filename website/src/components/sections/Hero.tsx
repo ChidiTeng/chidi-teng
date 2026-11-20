@@ -1,10 +1,11 @@
-import { Box, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { Container } from "@/components/ui/Container";
 import { GradientText, Lead } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { site } from "@/content/site";
 import { HeroMotion } from "./HeroMotion";
+import { HeroTelemetryPod } from "./HeroTelemetryPod";
 
 /** Server-rendered hero. HeroMotion only adds the entrance on top. */
 export function Hero() {
@@ -20,16 +21,16 @@ export function Hero() {
           data-hero="glow"
           aria-hidden="true"
           position="absolute"
-          top="-20%"
+          top="-25%"
           left="50%"
-          w="min(900px, 140vw)"
-          h="min(900px, 140vw)"
-          ml="calc(min(900px, 140vw) / -2)"
+          w="min(980px, 145vw)"
+          h="min(980px, 145vw)"
+          ml="calc(min(980px, 145vw) / -2)"
           rounded="full"
           pointerEvents="none"
           css={{
             background:
-              "radial-gradient(closest-side, rgb(34 211 238 / 0.16), rgb(167 139 250 / 0.10) 55%, transparent)",
+              "radial-gradient(closest-side, rgb(139 92 246 / 0.22), rgb(45 212 191 / 0.12) 48%, rgb(190 242 100 / 0.05) 70%, transparent)",
           }}
         />
         <Container
@@ -37,47 +38,24 @@ export function Hero() {
           pt={{ base: "20", md: "32" }}
           pb={{ base: "16", md: "24" }}
         >
-          {site.available && (
-            <HStack
-              data-hero="fade"
-              display="inline-flex"
-              gap="2"
-              px="3"
-              py="1.5"
-              mb="8"
-              rounded="full"
-              borderWidth="1px"
-              borderColor="border.subtle"
-              bg="bg.surface"
-              fontSize="sm"
-              color="fg.muted"
-            >
-              <Box
-                as="span"
-                boxSize="2"
-                rounded="full"
-                bg="success"
-                aria-hidden="true"
-              />
-              Taking on new projects
-            </HStack>
-          )}
+          {site.available && <HeroTelemetryPod />}
 
           <Heading
             as="h1"
             id="hero-title"
             textStyle="hero"
-            maxW="16ch"
+            maxW="17ch"
             textWrap="balance"
           >
-            Next.js sites and dashboards that load{" "}
-            <GradientText>fast</GradientText> and convert.
+            B2B systems built{" "}
+            <GradientText>fast, secure</GradientText> and resilient.
           </Heading>
 
           <Lead data-hero="fade" mt="6">
-            I&apos;m Emmanuel, a senior frontend engineer in Lagos with 5+ years
-            shipping production React and TypeScript. I build, redesign and
-            audit websites for teams in Nigeria and abroad.
+            I&apos;m Emmanuel (G.) Nwachukwu, a Software Engineer in Lagos with
+            5+ years building production SaaS and B2B platforms across frontend
+            architecture, APIs, Site Reliability Engineering, and Application
+            Security for high-trust teams.
           </Lead>
 
           <Flex data-hero="fade" mt="10" gap="3" wrap="wrap" align="center">
@@ -86,8 +64,11 @@ export function Hero() {
                 {site.primaryCta.label}
               </ButtonLink>
             </MagneticButton>
-            <ButtonLink href="/#services" variant="outline">
-              See services
+            <ButtonLink href="/#work" variant="outline">
+              See problems solved
+            </ButtonLink>
+            <ButtonLink href="/#about" variant="ghost">
+              Engineering philosophy →
             </ButtonLink>
           </Flex>
 
@@ -98,8 +79,8 @@ export function Hero() {
             fontSize="sm"
             color="fg.muted"
           >
-            {site.location.city}, WAT (UTC+1) · Remote-friendly · Fixed-price
-            quotes
+            {site.location.city}, WAT (UTC+1) · Frontend & APIs · AppSec (OWASP)
+            & SRE · FinTech & High-Trust SaaS
           </Text>
         </Container>
       </HeroMotion>

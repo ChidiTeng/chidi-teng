@@ -52,7 +52,7 @@ These depart from the plan where measurement or the Next 16 APIs called for it.
 5. **Real 404s under Cache Components.** The prerendered shell streams with a 200 before a page's `notFound()` can run. `src/proxy.ts` checks dynamic slugs against static content first, so unknown URLs return a true 404.
 6. **No next-themes.** The site is dark-only, so `class="dark"` is set on `<html>` directly.
 7. **SEO details.** Titles are absolute, so the 60-character budget is the whole `<title>`. Sitemap `lastmod` comes from content dates, not build time. `robots.txt` disallows everything on non-production Vercel deployments. JSON-LD covers Person, ProfessionalService, Service, BlogPosting and BreadcrumbList, with `<` escaped.
-8. **Contact endpoint.** JSON-only (blocks cross-site form posts), 10 KB body cap, Zod validation with field errors, honeypot plus a minimum fill time (bots get a silent 200), and rate limiting at 5 per 10 minutes per IP. The limiter is in-memory, so **swap it for Upstash or similar before relying on it on serverless**. Email is sent via the Resend REST API, so no SDK dependency.
+8. **Contact endpoint.** JSON-only (blocks cross-site form posts), 10 KB body cap, Zod validation with field errors, honeypot plus a minimum fill time (bots get a silent 200), and rate limiting at 5 per 10 minutes per IP. The limiter is in-memory, so **swap it for Upstash or similar before relying on it on serverless**. Email is sent directly to `NEXT_PUBLIC_CONTACT_EMAIL` via the Resend REST API, so no SDK dependency.
 9. **Security headers.** nosniff, `X-Frame-Options: DENY`, Referrer-Policy, Permissions-Policy and HSTS. There is no CSP yet: a nonce-based CSP forces dynamic rendering and would give up the static shell, so add a hash-based one if you need it.
 
 ## Before launch
@@ -60,7 +60,7 @@ These depart from the plan where measurement or the Next 16 APIs called for it.
 - [ ] Replace draft copy in `src/content/` with the Copy and SEO Playbook (v2) wording, and confirm commercial promises: two weeks of included fixes, two-day proposal turnaround, two-working-day reply time.
 - [ ] Fill in `proof.ts` with real, sourced numbers and flip `verified`.
 - [ ] Publish at least two case studies in `work.ts` (check NDAs).
-- [ ] Set the env vars in Vercel and verify a Resend sending domain. Send a test enquiry.
+- [ ] Set the env vars in Vercel (`NEXT_PUBLIC_CONTACT_EMAIL`, `NEXT_PUBLIC_CAL_URL`, `RESEND_API_KEY`) and send a test enquiry.
 - [ ] Replace the in-memory rate limiter with a shared store.
 - [ ] Replace `src/app/favicon.ico` with your own mark.
 - [ ] Run Lighthouse on a real mid-range Android phone, then verify Search Console and submit `/sitemap.xml`.

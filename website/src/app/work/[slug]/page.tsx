@@ -1,11 +1,23 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Badge, Box, Grid, Heading, List, Stack, Text } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  HStack,
+  List,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Section } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/Typography";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { ButtonLink } from "@/components/ui/ButtonLink";
+import { DetailDrapes } from "@/components/ui/DetailDrapes";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -55,17 +67,31 @@ export default async function CaseStudyPage({
 
   return (
     <article>
+      <DetailDrapes variant="work" />
       <PageHeader
-        eyebrow={`${c.client} · ${c.year}`}
+        eyebrow={`${c.client} · ${c.role ? `${c.role} · ` : ""}${c.year}`}
         title={c.title}
         lead={c.summary}
         crumbs={crumbs}
       >
-        {c.status === "draft" && (
-          <Badge mt="6" colorPalette="yellow" variant="subtle">
-            Draft, visible in development only
-          </Badge>
-        )}
+        <Flex mt="6" gap="3" wrap="wrap" align="center">
+          {c.domain && (
+            <span className="glow-pill glow-pill--violet">{c.domain}</span>
+          )}
+          {c.headlineBadge && (
+            <span className="glow-pill">{c.headlineBadge}</span>
+          )}
+          {c.status === "draft" && (
+            <Badge colorPalette="yellow" variant="subtle">
+              Draft, visible in development only
+            </Badge>
+          )}
+          {c.url && (
+            <ButtonLink href={c.url} variant="outline" size="sm">
+              Visit live site ↗
+            </ButtonLink>
+          )}
+        </Flex>
       </PageHeader>
 
       {c.results.length > 0 && (
@@ -81,8 +107,27 @@ export default async function CaseStudyPage({
               md: `repeat(${Math.min(c.results.length, 3)}, 1fr)`,
             }}
           >
-            {c.results.map((r) => (
-              <GlassCard key={r.label} display="flex" flexDirection="column">
+            {c.results.map((r, idx) => (
+              <GlassCard
+                key={r.label}
+                glow={idx % 3 === 0 ? "cyan" : idx % 3 === 1 ? "violet" : "lime"}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+                gap="3"
+              >
+                <HStack justify="space-between" order={0}>
+                  <Text
+                    fontFamily="mono"
+                    fontSize="xs"
+                    color="fg.muted"
+                    textTransform="uppercase"
+                    letterSpacing="0.06em"
+                  >
+                    Outcome 0{idx + 1}
+                  </Text>
+                  <span className="glow-pill glow-pill--cyan">Verified</span>
+                </HStack>
                 <Text
                   as="dd"
                   order={1}
@@ -91,9 +136,23 @@ export default async function CaseStudyPage({
                 >
                   {r.value}
                 </Text>
-                <Text as="dt" order={2} mt="2" color="fg.muted">
+                <Text as="dt" order={2} color="fg" fontWeight="500">
                   {r.label}
                 </Text>
+                <Text
+                  order={3}
+                  fontFamily="mono"
+                  fontSize="xs"
+                  color="fg.muted"
+                >
+                  Source: {r.source}
+                </Text>
+                <div className="glow-bar" aria-hidden="true" style={{ order: 4 }}>
+                  <div
+                    className="glow-bar__fill"
+                    style={{ width: "88%" }}
+                  />
+                </div>
               </GlassCard>
             ))}
           </Grid>
