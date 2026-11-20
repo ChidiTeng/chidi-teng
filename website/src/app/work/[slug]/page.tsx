@@ -17,6 +17,7 @@ import { Section } from "@/components/ui/Container";
 import { Eyebrow, SectionHeading } from "@/components/ui/Typography";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { DetailDrapes } from "@/components/ui/DetailDrapes";
 import { Reveal } from "@/components/ui/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -66,6 +67,7 @@ export default async function CaseStudyPage({
 
   return (
     <article>
+      <DetailDrapes variant="work" />
       <PageHeader
         eyebrow={`${c.client} · ${c.role ? `${c.role} · ` : ""}${c.year}`}
         title={c.title}

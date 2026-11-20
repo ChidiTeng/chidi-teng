@@ -17,6 +17,7 @@ import { Eyebrow, SectionHeading } from "@/components/ui/Typography";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { SpotlightCard, type GlowTone } from "@/components/ui/SpotlightCard";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { DetailDrapes } from "@/components/ui/DetailDrapes";
 import { Reveal } from "@/components/ui/Reveal";
 import { Process } from "@/components/sections/Process";
 import { Faq } from "@/components/sections/Faq";
@@ -95,6 +96,7 @@ export default async function ServicePage({
 
   return (
     <>
+      <DetailDrapes variant="service" />
       <PageHeader
         eyebrow={s.name}
         title={s.page.h1}
